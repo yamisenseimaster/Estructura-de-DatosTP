@@ -1,4 +1,4 @@
-package Tp4.Ejercicio1;
+package Tp4.ejercicio3;
 /*
 public interface Queue<E>
 extends Collection<E>

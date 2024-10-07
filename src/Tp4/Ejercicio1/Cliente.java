@@ -9,25 +9,30 @@ package Tp4.Ejercicio1;
 // código controle los problemas que normalmente ocurren al operar con la consola o teclado.
 // Se espera una correcta modularización entre el código que realiza el ingreso y validación de los datos
 // respecto del código que hace lo que se solicita en el ejercicio.
-public class AtencionCliente {
-    private  String codCliente;
+public class Cliente {
+    private  int codCliente;
     private  String aynCliente;
     private  String mailCliente;
 
 
-    public AtencionCliente(String codCliente, String aynCliente, String mailCliente) {
+    
+    public Cliente() {
+    }
+
+
+    public Cliente(int codCliente, String aynCliente, String mailCliente) {
         this.codCliente = codCliente;
         this.aynCliente = aynCliente;
         this.mailCliente = mailCliente;
     }
 
 
-    public String getCodCliente() {
+    public int getCodCliente() {
         return codCliente;
     }
 
 
-    public void setCodCliente(String codCliente) {
+    public void setCodCliente(int codCliente) {
         this.codCliente = codCliente;
     }
 
@@ -49,6 +54,10 @@ public class AtencionCliente {
 
     public void setMailCliente(String mailCliente) {
         this.mailCliente = mailCliente;
+    }
+    public String getApellido() {
+        String[] nombreApellido = aynCliente.split(" ");
+        return nombreApellido[nombreApellido.length - 1];
     }
 
 

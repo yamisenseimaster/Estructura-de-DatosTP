@@ -1,4 +1,4 @@
-package Tp4.Ejercicio1;
+package Tp4.ejercicio4;
 /*
 public interface Queue<E>
 extends Collection<E>
@@ -83,7 +83,7 @@ from https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/Queu
 
 //?sta constante se utiliza en el constructor de la clase Queue para establecer el tamaño predeterminado del arreglo data que 
 //?se utiliza para almacenar los elementos de la cola.
-    private final static Integer defaulDimension = 10;
+    private final static Integer defaulDimension = 50;
 
     //endregion
 

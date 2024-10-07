@@ -3,42 +3,13 @@ package Tp4.Prueba;
 public interface Queue<E>
 extends Collection<E>
 
-A collection designed for holding elements prior to processing.
-Besides basic Collection operations, queues provide additional insertion,
-extraction, and inspection operations. Each of these methods exists in
-two forms: one throws an exception if the operation fails, the other
-returns a special value (either null or false, depending on the operation).
+Una colección diseñada para contener elementos antes del procesamiento. Además de las operaciones básicas de recolección, las colas proporcionan inserción adicional operaciones de extracción e inspección. Cada uno de estos métodos existe en dos formas: una lanza una excepción si la operación falla, la otra devuelve un valor especial (ya sea nulo o falso, dependiendo de la operación). La última forma de la operación de inserción está diseñada específicamente para su uso con implementaciones de cola restringidas por capacidad; en la mayoría de las implementaciones, las operaciones de inserción no pueden fallar.
 
-The latter form of the insert operation is designed specifically for use
-with capacity-restricted Queue implementations; in most implementations,
-insert operations cannot fail.
+Las colas típicamente, pero no necesariamente, ordenan elementos en una FIFO (primero en primer lugar) manera. Entre las excepciones están las colas de prioridad, qué elementos de orden según un comparador suministrado, o los elementos' orden natural, y colas LIFO (o pilas) que ordenan los elementos LIFO (último en salir). Cualquiera que sea el pedido utilizado, el jefe de la la cola es ese elemento que se eliminaría mediante una llamada a remove() o encuesta(). En una cola FIFO, todos los elementos nuevos se insertan en la cola de la cola. Otros tipos de colas pueden usar diferentes reglas de colocación. Cada implementación de cola debe especificar sus propiedades de pedido.
 
-Queues typically, but do not necessarily, order elements in a FIFO
-(first-in-first-out) manner. Among the exceptions are priority queues,
-which order elements according to a supplied comparator, or the elements'
-natural ordering, and LIFO queues (or stacks) which order the elements
-LIFO (last-in-first-out). Whatever the ordering used, the head of the
-queue is that element which would be removed by a call to remove() or
-poll(). In a FIFO queue, all new elements are inserted at the tail of
-the queue. Other kinds of queues may use different placement rules.
-Every Queue implementation must specify its ordering properties.
+El método de oferta inserta un elemento si es posible, de lo contrario regresa falso. Esto difiere del método Collection.add, que puede fallar agregue un elemento solo lanzando una excepción sin verificar. La oferta el método está diseñado para su uso cuando la falla es normal, en lugar de ocurrencia excepcional, por ejemplo, en capacidad fija (o "limitada") colas.
 
-The offer method inserts an element if possible, otherwise returning
-false. This differs from the Collection.add method, which can fail to
-add an element only by throwing an unchecked exception. The offer
-method is designed for use when failure is a normal, rather than
-exceptional occurrence, for example, in fixed-capacity (or "bounded")
-queues.
-
-The remove() and poll() methods remove and return the head of the queue.
-Exactly which element is removed from the queue is a function of the
-queue's ordering policy, which differs from implementation to
-implementation. The remove() and poll() methods differ only in their
-behavior when the queue is empty: the remove() method throws an
-exception, while the poll() method returns null.
-
-The element() and peek() methods return, but do not remove, the head
-of the queue.
+Los métodos remove() y poll() eliminan y devuelven el encabezado de la cola. Exactamente qué elemento se elimina de la cola es una función de la la política de pedidos de la cola, que difiere de la implementación a implementación. Los métodos remove() y poll() difieren solo en sus comportamiento cuando la cola está vacía: el método remove() lanza un excepción, mientras que el método poll() devuelve null. Los métodos element() y peek() devuelven, pero no retiran, la cabeza de la cola.
 
 The Queue interface does not define the blocking queue methods, which
 are common in concurrent programming. These methods, which wait for
@@ -69,7 +40,7 @@ from https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/Queu
  */
 
 
-import java.util.Arrays;
+
 
 public class Queue<ELEMENT> {
 
@@ -93,6 +64,7 @@ public class Queue<ELEMENT> {
     public Queue() {
         this(Queue.defaulDimension);
     }
+    @SuppressWarnings("unchecked")
     public Queue(int dimension) {
         this.data = (ELEMENT[]) new Object[dimension];
         this.head = 0;
@@ -113,12 +85,11 @@ public class Queue<ELEMENT> {
 
     //region Queue Methods
 
-    // Operacion EnQueue en la teoría de Estructura de Datos
-    //
-    // Inserts the specified element into this queue if it is possible to do so
-    // immediately without violating capacity restrictions, returning true upon
-    // success and throwing an IllegalStateException if no space is currently
-    // available.
+    //Operación EnQueue en la teoría de Estructura de Datos 
+    // Inserta el elemento especificado en esta cola si es posible hacerlo 
+    //inmediatamente sin violar las restricciones de capacidad, volviendo verdadero a 
+    //éxito y lanzar una IlegalStateException si no hay espacio actualmente 
+    //disponible.
     public boolean add(ELEMENT element) {
 
         if (this.size() >= this.data.length) {
@@ -273,3 +244,4 @@ public class Queue<ELEMENT> {
     //endregion
 
 }
+// 
